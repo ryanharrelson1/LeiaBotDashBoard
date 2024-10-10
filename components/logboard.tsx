@@ -21,6 +21,7 @@ const logboard = () => {
           <Message />
           <Message />
           <Message />
+          <Message />
         </div>
       </div>
     </section>
