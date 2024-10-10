@@ -4,9 +4,9 @@ import Logboard from "@/components/logboard";
 
 const home = () => {
   return (
-    <main className="h-full flex flex-col gap-6">
+    <main className="flex flex-col gap-4 min-h-full">
       <section className="bg-gradient-to-r from-frog-green to-pond-blue p-5  rounded-3xl ">
-        <h1 className="absolute text-text-froggie-green font-bold text-4xl underline  w-fit ">
+        <h1 className=" text-text-froggie-green font-bold text-4xl underline  w-fit ">
           LeiaBot Dashboard
         </h1>
 
@@ -27,7 +27,8 @@ const home = () => {
         </div>
       </section>
       <section className="bg-gradient-to-r from-frog-green to-pond-blue p-10 rounded-3xl">
-        section 2
+       
+     
       </section>
     </main>
   );

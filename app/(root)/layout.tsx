@@ -1,17 +1,17 @@
 import React, { ReactNode } from "react";
 import Navbar from "@/components/navbar";
-import Sidebar from "@/components/sidebar";
+
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <main className="relative">
+    <main className="relative h-screen overflow-hidden ">
       <Navbar />
 
-      <div className="flex">
-        <section className="flex flex-1 flex-col h-screen px-14  pt-12">
-          {children}
+        <section className="flex flex-grow flex-1 flex-col h-full px-14 pt-12 overflow-y-auto custom-scrollbar ">
+          <div className="min-h-full"> {children}</div>
+         
         </section>
-      </div>
+      
     </main>
   );
 };

@@ -3,12 +3,12 @@ import Message from "./message";
 
 const logboard = () => {
   return (
-    <section className="bg-dark-dark-green w-[500px] px-5 pt-10 h-full py-2 rounded-lg ">
-      <div className="flex flex-col gap-4 overflow-y-scroll h-full custom-scrollbar">
+    <section className="bg-dark-dark-green w-[500px] px-5  h-full py-8 rounded-lg ">
+      <div className="flex flex-col flex-1 gap-4 h-full">
         <h1 className="text-text-lilly-pad-white font-bold text-2xl">
           Log Channel
         </h1>
-        <div className=" border-white border-[1px] rounded-lg ">
+        <div className=" border-white border-[1px] rounded-lg overflow-y-scroll custom-scrollbar p-2  ">
           <Message />
           <Message />
           <Message />

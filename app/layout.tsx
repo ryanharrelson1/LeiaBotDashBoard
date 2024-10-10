@@ -22,8 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} scroll-smooth overflow-hidden bg-dark-dark-green antialiased`}
-      >
+        className={`${poppins.className} scroll-smooth min-h-screen  bg-dark-dark-green antialiased`}
+      > 
         {children}
       </body>
     </html>
