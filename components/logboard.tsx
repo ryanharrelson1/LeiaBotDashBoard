@@ -8,7 +8,7 @@ const logboard = () => {
         <h1 className="text-text-lilly-pad-white font-bold text-2xl">
           Log Channel
         </h1>
-        <div className=" border-white border-[1px] rounded-lg overflow-y-scroll custom-scrollbar p-2  ">
+        <div className=" border-white border-[1px] rounded overflow-y-scroll custom-scrollbar p-2  ">
           <Message />
           <Message />
           <Message />

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import Logboard from "@/components/logboard";
+import FeatureCard from "@/components/featureCard";
 
 const home = () => {
   return (
@@ -20,15 +21,27 @@ const home = () => {
               Reset
             </Button>
           </div>
+          <img src="froggylogonew1.png" width={200} height={200} alt="logo" />
 
           <section className="h-[550px]">
             <Logboard />
           </section>
         </div>
       </section>
-      <section className="bg-gradient-to-r from-frog-green to-pond-blue p-10 rounded-3xl">
-       
-     
+      <section className="bg-gradient-to-r from-frog-green to-pond-blue p-5 rounded-3xl">
+        <h1 className="text-text-froggie-green font-bold text-4xl underline w-fit">
+          Feature Panel
+        </h1>
+        <main className=" p-4 pt-12 grid grid-cols-4 grid-rows-2 gap-4 justify-center">
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+          <FeatureCard />
+        </main>
       </section>
     </main>
   );
