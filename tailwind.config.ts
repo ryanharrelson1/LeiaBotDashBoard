@@ -1,3 +1,4 @@
+import { url } from "inspector";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -9,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        froggietheme: "url('../public/froggiebg.png')",
+      },
       colors: {
         dark: {
           "dark-green": "#2C3E50",

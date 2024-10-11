@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.glass {
+  background: rgba(255, 255, 255, 0.2); /* White background with transparency */
+  backdrop-filter: blur(15px); /* Blur effect */
+  border: 1px transparent rgba(255, 255, 255, 0.3); /* Light border */
+}
 .custom-scrollbar::-webkit-scrollbar {
   width: 12px;
 }
