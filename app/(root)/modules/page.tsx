@@ -1,7 +1,11 @@
-import React from "react";
+import ModulesCard from "@/components/ModulesCard";
+
+
 
 const modules = () => {
-  return <div>modules</div>;
+  return <div>
+    <ModulesCard/>
+  </div>;
 };
 
 export default modules;
