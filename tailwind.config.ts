@@ -1,5 +1,6 @@
 import { url } from "inspector";
 import type { Config } from "tailwindcss";
+import { custom } from "zod";
 
 const config: Config = {
   darkMode: ["class"],
@@ -10,6 +11,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        custom: "0 4px 30px rgba(0, 0, 0, 0.5)",
+      },
       backgroundImage: {
         froggietheme: "url('../public/froggiebg.png')",
       },

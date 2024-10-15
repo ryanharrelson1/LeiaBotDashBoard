@@ -21,10 +21,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="./public/favicon.png" />
-        {/* Add your favicon here */}
-      </head>
       <body
         className={`${poppins.className} scroll-smooth bg-dark-dark-green antialiased`}
       >

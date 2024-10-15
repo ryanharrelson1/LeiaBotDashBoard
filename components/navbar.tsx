@@ -1,12 +1,21 @@
+"use client";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
 
 const navbar = () => {
+  const router = useRouter();
+  const HandelCLick = () => {
+    router.push("/");
+  };
   return (
-    <div className=" sticky bg-green-500 p-4">
+    <div className=" sticky bg-green-500 p-4 shadow-custom border-y-light-petal-pink border-b-4">
       <nav className="flex justify-between items-center">
-        <div className="flex justify-center items-center">
+        <div
+          onClick={HandelCLick}
+          className="flex justify-center items-center cursor-pointer"
+        >
           <img src="froggylogonew1.png" height={48} width={48} alt="logo" />
           <h1 className="pl-4 text-text-lilly-pad-white font-bold text-2xl">
             LeiaBot

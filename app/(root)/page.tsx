@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import Logboard from "@/components/logboard";
 import FeatureCard from "@/components/featureCard";
+import { ModuleData } from "@/utils/modulecardData";
 
 const home = () => {
   return (
@@ -33,14 +34,13 @@ const home = () => {
           Feature Panel
         </h1>
         <main className=" p-4 pt-12 grid grid-cols-4 grid-rows-2 gap-4 justify-center">
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
+          {ModuleData.map((mod) => (
+            <FeatureCard
+              key={mod.name}
+              moduleName={mod.name}
+              ModuleDescription={mod.description}
+            />
+          ))}
         </main>
       </section>
     </main>
