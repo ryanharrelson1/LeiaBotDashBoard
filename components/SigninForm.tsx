@@ -14,6 +14,11 @@ import {
 import { Input } from "@/components/ui/input";
 
 const SigninForm = () => {
+  const Handelclick = () => {
+
+    window.location.href
+    
+  }
 
     const formSchema = z.object({
         UserId: z.string().min(2).max(2),
@@ -100,6 +105,11 @@ const SigninForm = () => {
                 <p className="text-light-petal-pink">
                   Forgot Login? Contact @Azn Daddy on Discord
                 </p>
+                <div className="flex">
+                  <h2 className="text-text-lilly-pad-white font-semibold">Need Access? Click the Button</h2>
+                <Button onClick={Handelclick}>Access</Button>
+                </div>
+               
               </div>
             </form>
           </Form>
