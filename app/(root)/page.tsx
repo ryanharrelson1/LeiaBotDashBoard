@@ -6,7 +6,7 @@ import { ModuleData } from "@/utils/modulecardData";
 
 const home = () => {
   return (
-    <main className="flex flex-col gap-4 min-h-full">
+    <main className="flex flex-col gap-4 min-h-full min-w-[1250px]">
       <section className="bg-gradient-to-r from-frog-green to-pond-blue p-5  rounded-3xl ">
         <h1 className=" text-text-froggie-green font-bold text-4xl underline  w-fit ">
           LeiaBot Dashboard
