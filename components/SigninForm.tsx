@@ -12,40 +12,38 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useDiscordOAuth from "@/hooks/DiscordHook";
+import useLogin from "@/hooks/LoginHook";
 
 const SigninForm = () => {
-  const Handelclick = () => {
+  const { redirectToDiscordOAuth, loading } = useDiscordOAuth();
+  const { LoginUser, load } = useLogin();
 
-    window.location.href
-    
+  const formSchema = z.object({
+    Username: z.string().min(2).max(50),
+    Password: z.string().min(2).max(30),
+  });
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      Username: "",
+      Password: "",
+    },
+  });
+
+  // 2. Define a submit handler.
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+
+    LoginUser(values);
+    console.log(values);
   }
-
-    const formSchema = z.object({
-        UserId: z.string().min(2).max(2),
-        Password: z.string().min(2).max(10),
-      });
-      // 1. Define your form.
-      const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-          UserId: "",
-          Password: "",
-        },
-      });
-    
-      // 2. Define a submit handler.
-      function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values);
-      }
-      
-    
 
   return (
     <main>
-
-    <div className="glass rounded-lg p-10 px-20">
+      <div className="glass rounded-lg p-10 px-20">
         <div className="flex flex-col items-center gap-2">
           <h1 className="font-bold text-text-lilly-pad-white text-3xl">
             Moderator Login
@@ -58,7 +56,7 @@ const SigninForm = () => {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <FormField
                 control={form.control}
-                name="UserId"
+                name="Username"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-text-lilly-pad-white">
@@ -100,24 +98,26 @@ const SigninForm = () => {
                   type="submit"
                   className="bg-light-petal-pink text-text-lilly-pad-white font-bold w-full"
                 >
-                  Login
+                  {load ? "logging in..." : "Login"}
                 </Button>
                 <p className="text-light-petal-pink">
                   Forgot Login? Contact @Azn Daddy on Discord
                 </p>
                 <div className="flex">
-                  <h2 className="text-text-lilly-pad-white font-semibold">Need Access? Click the Button</h2>
-                <Button onClick={Handelclick}>Access</Button>
+                  <h2 className="text-text-lilly-pad-white font-semibold">
+                    Need Access? Click the Button
+                  </h2>
+                  <Button onClick={redirectToDiscordOAuth} disabled={loading}>
+                    {loading ? "redirecting..." : "Access"}
+                  </Button>
                 </div>
-               
               </div>
             </form>
           </Form>
         </div>
       </div>
-
     </main>
-  )
-}
+  );
+};
 
-export default SigninForm
+export default SigninForm;
