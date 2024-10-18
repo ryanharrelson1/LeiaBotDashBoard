@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import withProtectedRoute from "@/utils/ProtectedComponet";
 
 const Annoucment = () => {
   return (
@@ -44,4 +45,4 @@ const Annoucment = () => {
   );
 };
 
-export default Annoucment;
+export default withProtectedRoute(Annoucment);

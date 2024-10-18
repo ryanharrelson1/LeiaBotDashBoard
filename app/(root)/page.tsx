@@ -4,20 +4,23 @@ import Logboard from "@/components/logboard";
 import FeatureCard from "@/components/featureCard";
 import { ModuleData } from "@/utils/modulecardData";
 
-const home = () => {
+const Home = () => {
+  // Changed home to Home
   return (
     <main className="flex flex-col gap-4 min-h-full min-w-[1250px]">
-      <section className="bg-gradient-to-r from-frog-green to-pond-blue p-5  rounded-3xl ">
-        <h1 className=" text-text-froggie-green font-bold text-4xl underline  w-fit ">
+      <section className="bg-gradient-to-r from-frog-green to-pond-blue p-5 rounded-3xl">
+        <h1 className="text-text-froggie-green font-bold text-4xl underline w-fit">
           LeiaBot Dashboard
         </h1>
 
-        <div className="flex justify-between items-center px-20 ">
-          <div className="flex flex-col  text-text-lilly-pad-white gap-4 items-center p-10">
+        <div className="flex justify-between items-center px-20">
+          <div className="flex flex-col text-text-lilly-pad-white gap-4 items-center p-10">
             <h1 className="text-text-froggie-green text-5xl font-bold">
-              12:45Pm
+              12:45 PM
             </h1>
-            <h2 className="text-4xl font-semibold">Bot: Online</h2>
+            <h2 className="text-4xl font-semibold">
+              Bot: Online ${user.Username}
+            </h2>
             <Button className="bg-light-petal-pink text-text-lilly-pad-white text-2xl">
               Reset
             </Button>
@@ -33,7 +36,7 @@ const home = () => {
         <h1 className="text-text-froggie-green font-bold text-4xl underline w-fit">
           Feature Panel
         </h1>
-        <main className=" p-4 pt-12 grid grid-cols-4 grid-rows-2 gap-4 justify-center">
+        <main className="p-4 pt-12 grid grid-cols-4 grid-rows-2 gap-4 justify-center">
           {ModuleData.map((mod) => (
             <FeatureCard
               key={mod.name}
@@ -47,4 +50,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;

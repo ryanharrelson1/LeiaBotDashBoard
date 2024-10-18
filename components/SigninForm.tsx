@@ -38,7 +38,6 @@ const SigninForm = () => {
     // ✅ This will be type-safe and validated.
 
     LoginUser(values);
-    console.log(values);
   }
 
   return (

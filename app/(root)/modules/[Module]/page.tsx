@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { moduleComponet } from "@/components/ModuleComponet";
+import withProtectedRoute from "@/utils/ProtectedComponet";
 
 const page = () => {
   const pathname = usePathname();
@@ -25,4 +26,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default withProtectedRoute(page);

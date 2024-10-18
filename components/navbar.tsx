@@ -3,8 +3,10 @@ import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 const navbar = () => {
+  const { user, loading } = useAuth();
   const router = useRouter();
   const HandelCLick = () => {
     router.push("/");
@@ -27,7 +29,7 @@ const navbar = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <h2 className="pl-2 text-text-lilly-pad-white font-semibold text-[18px]">
-            welcome Leia
+            welcome {user.user}
           </h2>
           <div className="pl-4">
             <Button className="bg-light-petal-pink rounded-xl">LogOut</Button>
