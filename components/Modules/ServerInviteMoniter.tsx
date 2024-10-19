@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import withProtectedRoute from "@/utils/ProtectedComponet";
 
 const ServerInviteMoniter = () => {
   return (
@@ -45,4 +46,4 @@ const ServerInviteMoniter = () => {
   );
 };
 
-export default ServerInviteMoniter;
+export default withProtectedRoute(ServerInviteMoniter);

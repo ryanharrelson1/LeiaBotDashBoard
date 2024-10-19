@@ -1,16 +1,22 @@
 "use client";
-import React, { use } from "react";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import useLogout from "@/hooks/LogoutHook";
 
 const navbar = () => {
   const { user, loading } = useAuth();
+  const {LogoutUser, isloading} = useLogout();
   const router = useRouter();
   const HandelCLick = () => {
     router.push("/");
   };
+
+  const Logout = () =>{
+    LogoutUser();
+  }
 
   return (
     <div className=" sticky bg-green-500 p-4 shadow-custom border-y-light-petal-pink border-b-4">
@@ -30,10 +36,10 @@ const navbar = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <h2 className="pl-2 text-text-lilly-pad-white font-semibold text-[18px]">
-            welcome {user.username}
+            welcome {user?.username}
           </h2>
           <div className="pl-4">
-            <Button className="bg-light-petal-pink rounded-xl">LogOut</Button>
+            <Button className="bg-light-petal-pink rounded-xl" onClick={Logout}>LogOut</Button>
           </div>
         </div>
       </nav>

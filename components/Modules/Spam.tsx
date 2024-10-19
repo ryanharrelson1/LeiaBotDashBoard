@@ -9,6 +9,8 @@ import {
 } from "../ui/select";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import withProtectedRoute from "@/utils/ProtectedComponet";
+withProtectedRoute
 
 const Spam = () => {
   return (
@@ -68,4 +70,4 @@ const Spam = () => {
   );
 };
 
-export default Spam;
+export default withProtectedRoute(Spam);

@@ -9,6 +9,7 @@ import {
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
+import withProtectedRoute from "@/utils/ProtectedComponet";
 
 const Leveling = () => {
   return (
@@ -93,4 +94,4 @@ const Leveling = () => {
   );
 };
 
-export default Leveling;
+export default withProtectedRoute(Leveling);

@@ -7,6 +7,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import withProtectedRoute from "@/utils/ProtectedComponet";
+
 
 const UserReport = () => {
   return (
@@ -44,4 +46,4 @@ const UserReport = () => {
   );
 };
 
-export default UserReport;
+export default withProtectedRoute(UserReport);

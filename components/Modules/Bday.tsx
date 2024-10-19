@@ -9,6 +9,7 @@ import {
 } from "../ui/select";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import withProtectedRoute from "@/utils/ProtectedComponet";
 
 const Bday = () => {
   return (
@@ -58,4 +59,4 @@ const Bday = () => {
   );
 };
 
-export default Bday;
+export default withProtectedRoute(Bday);
