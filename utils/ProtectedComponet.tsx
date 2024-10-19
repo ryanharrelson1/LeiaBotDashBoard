@@ -6,9 +6,8 @@ import { useEffect } from "react";
 
 const withProtectedRoute = (WrappedComponent: React.ComponentType) => {
   const HOC = (props: any) => {
-    console.log("HOC: withProtectedRoute called");
     const { user, loading }: any = useAuth();
-    console.log(user, "hoc user");
+
     const router = useRouter();
 
     useEffect(() => {

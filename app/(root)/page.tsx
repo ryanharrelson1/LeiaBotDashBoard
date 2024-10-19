@@ -1,8 +1,11 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import React from "react";
 import Logboard from "@/components/logboard";
 import FeatureCard from "@/components/featureCard";
 import { ModuleData } from "@/utils/modulecardData";
+import withProtectedRoute from "@/utils/ProtectedComponet";
 
 const Home = () => {
   // Changed home to Home
@@ -18,9 +21,7 @@ const Home = () => {
             <h1 className="text-text-froggie-green text-5xl font-bold">
               12:45 PM
             </h1>
-            <h2 className="text-4xl font-semibold">
-              Bot: Online ${user.Username}
-            </h2>
+            <h2 className="text-4xl font-semibold">Bot: Online</h2>
             <Button className="bg-light-petal-pink text-text-lilly-pad-white text-2xl">
               Reset
             </Button>
@@ -50,4 +51,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withProtectedRoute(Home);

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { use } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
@@ -11,6 +11,7 @@ const navbar = () => {
   const HandelCLick = () => {
     router.push("/");
   };
+
   return (
     <div className=" sticky bg-green-500 p-4 shadow-custom border-y-light-petal-pink border-b-4">
       <nav className="flex justify-between items-center">
@@ -29,7 +30,7 @@ const navbar = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <h2 className="pl-2 text-text-lilly-pad-white font-semibold text-[18px]">
-            welcome {user.user}
+            welcome {user.username}
           </h2>
           <div className="pl-4">
             <Button className="bg-light-petal-pink rounded-xl">LogOut</Button>
