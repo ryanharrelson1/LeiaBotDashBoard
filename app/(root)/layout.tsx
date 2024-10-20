@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Navbar from "@/components/navbar";
+import TokenExpireModelHandelr from "@/components/TokenExpireModelHandelr";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -7,6 +8,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
       <Navbar />
 
       <section className="flex flex-col px-14 pt-12 overflow-y-auto custom-scrollbar ">
+        <TokenExpireModelHandelr />
         {children}
       </section>
     </main>
