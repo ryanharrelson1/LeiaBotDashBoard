@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const useUpdateConfig = () => {
+  const { toast } = useToast();
   const [success, setSuccess] = useState(false);
   const [load, setLoad] = useState(false);
 
@@ -17,8 +19,19 @@ const useUpdateConfig = () => {
       );
 
       setSuccess(true);
+
+      toast({
+        className: "bg-green-500",
+        title: "Success.",
+        description: "Your changes where updated.",
+      });
       return res.data; // You may return the response if needed
     } catch (err) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
       console.error("Error updating configuration:", err);
     } finally {
       setLoad(false);

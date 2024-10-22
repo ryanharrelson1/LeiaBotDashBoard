@@ -29,6 +29,7 @@ const config: Config = {
           "lilly-green": "#4CAF50",
           "petal-pink": "#FF6F61",
         },
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
