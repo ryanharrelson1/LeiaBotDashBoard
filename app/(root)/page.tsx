@@ -6,6 +6,7 @@ import Logboard from "@/components/logboard";
 import FeatureCard from "@/components/featureCard";
 import { ModuleData } from "@/utils/modulecardData";
 import withProtectedRoute from "@/utils/ProtectedComponet";
+import CurrentTime from "@/components/CurrentTime";
 
 const Home = () => {
   // Changed home to Home
@@ -19,7 +20,7 @@ const Home = () => {
         <div className="flex justify-between items-center px-20">
           <div className="flex flex-col text-text-lilly-pad-white gap-4 items-center p-10">
             <h1 className="text-text-froggie-green text-5xl font-bold">
-              12:45 PM
+              <CurrentTime />
             </h1>
             <h2 className="text-4xl font-semibold">Bot: Online</h2>
             <Button className="bg-light-petal-pink text-text-lilly-pad-white text-2xl">
