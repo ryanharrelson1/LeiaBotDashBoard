@@ -1,20 +1,17 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+
 import React from "react";
 import Logboard from "@/components/logboard";
 import FeatureCard from "@/components/featureCard";
 import { ModuleData } from "@/utils/modulecardData";
 import withProtectedRoute from "@/utils/ProtectedComponet";
 import CurrentTime from "@/components/CurrentTime";
-import UseRender from "@/hooks/RestartBotHook";
+
 
 const Home = () => {
-  const { loading, RestartService } = UseRender();
-  const HandelRestart = () => {
-    RestartService();
-  };
-  // Changed home to Home
+  
+ 
   return (
     <main className="flex flex-col gap-4 min-h-full min-w-[1250px]">
       <section className="bg-gradient-to-r from-frog-green to-pond-blue p-5 rounded-3xl">
@@ -28,12 +25,7 @@ const Home = () => {
               <CurrentTime />
             </h1>
             <h2 className="text-4xl font-semibold">Bot: Online</h2>
-            <Button
-              onClick={HandelRestart}
-              className="bg-light-petal-pink text-text-lilly-pad-white text-2xl"
-            >
-              Reset
-            </Button>
+           
           </div>
           <img src="froggylogonew1.png" width={200} height={200} alt="logo" />
 
