@@ -124,7 +124,7 @@ const SigninForm = () => {
             </form>
           </Form>
           <PasswordChangeModel
-            isVisable={showPassChange}
+            isVisible={showPassChange}
             onClose={() => setShowPassChange(false)}
           />
         </div>
