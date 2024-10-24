@@ -6,11 +6,14 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import useLogout from "@/hooks/LogoutHook";
 
-const navbar = () => {
+const Navbar = () => {
+  // Changed navbar to Navbar
   const { user } = useAuth();
   const { LogoutUser } = useLogout();
   const router = useRouter();
-  const HandelCLick = () => {
+
+  const handleClick = () => {
+    // Fixed typo: "HandelCLick" to "handleClick"
     router.push("/");
   };
 
@@ -19,10 +22,10 @@ const navbar = () => {
   };
 
   return (
-    <div className=" sticky bg-green-500 p-4 shadow-custom border-y-light-petal-pink border-b-4">
+    <div className="sticky bg-green-500 p-4 shadow-custom border-y-light-petal-pink border-b-4">
       <nav className="flex justify-between items-center">
         <div
-          onClick={HandelCLick}
+          onClick={handleClick} // Use the corrected handleClick function
           className="flex justify-center items-center cursor-pointer"
         >
           <img src="froggylogonew1.png" height={48} width={48} alt="logo" />
@@ -49,4 +52,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default Navbar; // Updated export statement to match new component name
