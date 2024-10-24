@@ -7,7 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import useLogout from "@/hooks/LogoutHook";
 
 const navbar = () => {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
   const { LogoutUser } = useLogout();
   const router = useRouter();
   const HandelCLick = () => {

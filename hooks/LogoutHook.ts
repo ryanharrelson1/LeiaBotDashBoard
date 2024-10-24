@@ -3,11 +3,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 
-interface AuthContextType {
-  Logout: () => void; // Define Logout method
-  loading: boolean; // Define loading property
-  // Add any other properties or methods you may have
-}
 const useLogout = () => {
   const { Logout } = useAuth();
   const router = useRouter();

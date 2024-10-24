@@ -24,11 +24,11 @@ type Channel = {
   name: string;
 };
 
-const logboard = () => {
+const Logboard = () => {
   const { messages, load: loadingMessages } = UseLogChannel();
   const { channels } = useDiscordData();
   const { updateConfig } = useUpdateConfig();
-  const SetLogChannel = (values: any) => {
+  const SetLogChannel = (values: unknown) => {
     updateConfig({ logchannel: values });
   };
 
@@ -76,4 +76,4 @@ const logboard = () => {
   );
 };
 
-export default logboard;
+export default Logboard;

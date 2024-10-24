@@ -36,15 +36,7 @@ const Annoucment = () => {
     updateConfig(values);
   }
 
-  const { channels, loading } = useDiscordData();
-
-  if (loading) {
-    return (
-      <div>
-        <p>Loading channels...</p>
-      </div>
-    );
-  }
+  const { channels } = useDiscordData();
 
   type Channel = {
     id: string;
