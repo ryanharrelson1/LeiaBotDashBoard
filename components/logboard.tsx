@@ -12,10 +12,22 @@ import useDiscordData from "@/hooks/DiscordGuildHook";
 import useUpdateConfig from "@/hooks/UpdateConfigHook";
 import UseLogChannel from "@/hooks/DiscordLogChannelHook";
 
+interface MessageProps {
+  id: number;
+  content: string; // Message content should be a string
+  author: string; // Author should be a string
+  createdAt: number; // Timestamp should be a number (Unix timestamp or date string)
+}
+
+type Channel = {
+  id: string;
+  name: string;
+};
+
 const logboard = () => {
   const { messages, load: loadingMessages } = UseLogChannel();
-  const { channels, loading } = useDiscordData();
-  const { updateConfig, load } = useUpdateConfig();
+  const { channels } = useDiscordData();
+  const { updateConfig } = useUpdateConfig();
   const SetLogChannel = (values: any) => {
     updateConfig({ logchannel: values });
   };
@@ -33,7 +45,7 @@ const logboard = () => {
                 <SelectValue placeholder="Select Channel" />
               </SelectTrigger>
               <SelectContent>
-                {channels.map((channel) => (
+                {channels.map((channel: Channel) => (
                   <SelectItem key={channel.id} value={channel.id}>
                     {channel.name}
                   </SelectItem>
@@ -47,7 +59,7 @@ const logboard = () => {
           {loadingMessages ? (
             <p>Loading messages...</p>
           ) : messages.length > 0 ? (
-            messages.map((msg) => (
+            messages.map((msg: MessageProps) => (
               <Message
                 key={msg.id}
                 content={msg.content}

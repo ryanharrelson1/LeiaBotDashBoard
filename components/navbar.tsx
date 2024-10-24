@@ -8,15 +8,15 @@ import useLogout from "@/hooks/LogoutHook";
 
 const navbar = () => {
   const { user, loading } = useAuth();
-  const {LogoutUser, isloading} = useLogout();
+  const { LogoutUser } = useLogout();
   const router = useRouter();
   const HandelCLick = () => {
     router.push("/");
   };
 
-  const Logout = () =>{
+  const Logout = () => {
     LogoutUser();
-  }
+  };
 
   return (
     <div className=" sticky bg-green-500 p-4 shadow-custom border-y-light-petal-pink border-b-4">
@@ -39,7 +39,9 @@ const navbar = () => {
             welcome {user?.username}
           </h2>
           <div className="pl-4">
-            <Button className="bg-light-petal-pink rounded-xl" onClick={Logout}>LogOut</Button>
+            <Button className="bg-light-petal-pink rounded-xl" onClick={Logout}>
+              LogOut
+            </Button>
           </div>
         </div>
       </nav>

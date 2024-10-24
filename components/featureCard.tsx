@@ -4,16 +4,26 @@ import { useState } from "react";
 import { Switch } from "./ui/switch";
 import { useRouter } from "next/navigation";
 
-const featureCard = ({ moduleName, ModuleDescription }: any) => {
+// Define the prop types
+interface FeatureCardProps {
+  moduleName: string;
+  ModuleDescription: string;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({
+  moduleName,
+  ModuleDescription,
+}) => {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
 
-  const HandelClick = () => {
+  const handleClick = () => {
     router.push(`/modules/${moduleName}`);
   };
+
   return (
     <section
-      onClick={HandelClick}
+      onClick={handleClick}
       className={`w-[190px] p-4 rounded-xl transition-all duration-500 ease-in-out cursor-pointer ${
         isHovered ? "hover-bg-fade shadow-custom" : "hover-bg-return shadow"
       }`}
@@ -28,7 +38,7 @@ const featureCard = ({ moduleName, ModuleDescription }: any) => {
           </h2>
         </div>
         <div className="p-1 bg-text-lilly-pad-white rounded-full" />
-        <section className=" text-text-lilly-pad-white font-semibold">
+        <section className="text-text-lilly-pad-white font-semibold">
           {ModuleDescription}
         </section>
       </div>
@@ -36,4 +46,4 @@ const featureCard = ({ moduleName, ModuleDescription }: any) => {
   );
 };
 
-export default featureCard;
+export default FeatureCard;

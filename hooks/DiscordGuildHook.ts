@@ -12,7 +12,9 @@ const useDiscordData = () => {
       setLoading(true);
 
       try {
-        const res = await axios.get("http://localhost:5000/auth/discord/guild");
+        const res = await axios.get(
+          "https://leiabot.onrender.com/auth/discord/guild"
+        );
         setChannels(res.data.textChannel);
         setError(null);
 

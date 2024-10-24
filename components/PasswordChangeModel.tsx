@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
+// Define the validation schema for the form
 const formSchema = z
   .object({
     newPassword: z
@@ -28,7 +29,16 @@ const formSchema = z
     path: ["confirmPassword"],
   });
 
-const PasswordChangeModel = ({ isVisable, onClose }) => {
+// Define the props type for the PasswordChangeModal component
+interface PasswordChangeModalProps {
+  isVisible: boolean; // Change to isVisible for clarity
+  onClose: () => void; // onClose should be a function
+}
+
+const PasswordChangeModal: React.FC<PasswordChangeModalProps> = ({
+  isVisible,
+  onClose,
+}) => {
   const { changePassword, load } = useLogin();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -39,13 +49,14 @@ const PasswordChangeModel = ({ isVisable, onClose }) => {
     },
   });
 
+  // Handle form submission
   function onSubmit(values: z.infer<typeof formSchema>) {
     changePassword(values.newPassword);
     console.log(values, "form values");
     onClose();
   }
 
-  if (!isVisable) return null;
+  if (!isVisible) return null; // Return null if the modal is not visible
   return (
     <div className="fixed flex flex-col bg-dark-dark-green top-[30vh] p-4 w-[300px] gap-2 border-light-lilly-green border-[1px] rounded-2xl">
       <h1 className="flex justify-center text-text-lilly-pad-white font-semibold">
@@ -87,7 +98,7 @@ const PasswordChangeModel = ({ isVisable, onClose }) => {
               </FormItem>
             )}
           />
-          <Button className="bg-light-petal-pink" type="submit">
+          <Button className="bg-light-petal-pink" type="submit" disabled={load}>
             Submit
           </Button>
         </form>
@@ -96,4 +107,4 @@ const PasswordChangeModel = ({ isVisable, onClose }) => {
   );
 };
 
-export default PasswordChangeModel;
+export default PasswordChangeModal;

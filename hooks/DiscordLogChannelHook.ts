@@ -12,7 +12,7 @@ const UseLogChannel = () => {
 
         // Fetch log messages without needing a channelId
         const res = await axios.get(
-          "http://localhost:5000/auth/discord/get-log-messages"
+          "https://leiabot.onrender.com/auth/discord/get-log-messages"
         );
 
         // Assuming the response structure contains logs as an array

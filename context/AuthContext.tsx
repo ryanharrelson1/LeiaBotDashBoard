@@ -1,20 +1,38 @@
 "use client";
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+
+// Define a type for the user object
+interface User {
+  id: string;
+  username: string;
+  email: string;
+  // Add other user properties as needed
+}
 
 interface AuthContextType {
-  user: any;
+  user: User | null; // Use the User type or null
   loading: boolean;
-  setData: (userData: any) => void;
+  setData: (userData: User) => void; // Specify the type for setData
   Logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider = ({ children }: any) => {
-  const [user, setUser] = useState(null);
+interface AuthProviderProps {
+  children: ReactNode; // Explicitly type children as ReactNode
+}
+
+export const AuthProvider = ({ children }: AuthProviderProps) => {
+  const [user, setUser] = useState<User | null>(null); // Initialize user as null
   const [loading, setLoading] = useState(true); // Initially loading is true
 
-  const setData = (userData: any) => {
+  const setData = (userData: User) => {
     setUser(userData);
     console.log("Setting user data:", userData);
     setLoading(false);
@@ -33,7 +51,7 @@ export const AuthProvider = ({ children }: any) => {
   const Logout = () => {
     setUser(null);
     localStorage.removeItem("user");
-    setLoading(false);
+    setLoading(true); // Optionally set loading to true during logout
   };
 
   console.log("AuthContext - Current User:", user);
@@ -45,4 +63,10 @@ export const AuthProvider = ({ children }: any) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};

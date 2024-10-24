@@ -25,9 +25,14 @@ const formSchema = z.object({
   reportchannel: z.string().nonempty("you must select a channel"),
 });
 
+type Channel = {
+  id: string;
+  name: string;
+};
+
 const UserReport = () => {
-  const { updateConfig, load } = useUpdateConfig();
-  const { channels, loading } = useDiscordData();
+  const { updateConfig } = useUpdateConfig();
+  const { channels } = useDiscordData();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -67,7 +72,7 @@ const UserReport = () => {
                             <SelectValue placeholder="channel" />
                           </SelectTrigger>
                           <SelectContent className="">
-                            {channels.map((channel) => (
+                            {channels.map((channel: Channel) => (
                               <SelectItem key={channel.id} value={channel.id}>
                                 {channel.name}
                               </SelectItem>

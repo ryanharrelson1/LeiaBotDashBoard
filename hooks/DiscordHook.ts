@@ -7,7 +7,9 @@ const useDiscordOAuth = () => {
   const redirectToDiscordOAuth = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/auth/discord");
+      const response = await axios.get(
+        "https://leiabot.onrender.com/auth/discord"
+      );
       if (response.status === 200) {
         window.location.href = response.data.DiscordAuthUrl;
       }

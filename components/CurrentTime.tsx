@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const CurrentTime = () => {
-  const [currentTime, setCurrentTime] = useState(new Date());
+const CurrentTime: React.FC = () => {
+  const [currentTime, setCurrentTime] = useState<Date>(new Date()); // Specify Date type
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -11,7 +11,8 @@ const CurrentTime = () => {
     return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, []);
 
-  const formatTime = (date) => {
+  const formatTime = (date: Date): string => {
+    // Specify Date type for parameter
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   };
 

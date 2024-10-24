@@ -19,7 +19,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import useUpdateConfig from "@/hooks/UpdateConfigHook";
@@ -31,9 +30,14 @@ const formSchema = z.object({
   masterprestigerole: z.string().nonempty("you must select a role"),
 });
 
+export type Role = {
+  id: string; // Unique identifier for the role
+  name: string; // Display name of the role
+};
+
 const Leveling = () => {
-  const { updateConfig, load } = useUpdateConfig();
-  const { roles, loading } = useDiscordData();
+  const { updateConfig } = useUpdateConfig();
+  const { roles } = useDiscordData();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,7 +53,6 @@ const Leveling = () => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     updateConfig(values);
-    console.log(values);
   }
 
   return (
@@ -130,7 +133,7 @@ const Leveling = () => {
                               <SelectValue placeholder="Theme" />
                             </SelectTrigger>
                             <SelectContent className="">
-                              {roles.map((role) => (
+                              {roles.map((role: Role) => (
                                 <SelectItem key={role.id} value={role.id}>
                                   {role.name}
                                 </SelectItem>
@@ -160,7 +163,7 @@ const Leveling = () => {
                               <SelectValue placeholder="Theme" />
                             </SelectTrigger>
                             <SelectContent className="">
-                              {roles.map((role) => (
+                              {roles.map((role: Role) => (
                                 <SelectItem key={role.id} value={role.id}>
                                   {role.name}
                                 </SelectItem>

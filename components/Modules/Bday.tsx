@@ -18,7 +18,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import useDiscordData from "@/hooks/DiscordGuildHook";
@@ -29,9 +28,14 @@ const formSchema = z.object({
   bdayrole: z.string().nonempty("you need to select a role"),
 });
 
+export type Role = {
+  id: string; // Unique identifier for the role
+  name: string; // Display name of the role
+};
+
 const Bday = () => {
-  const { roles, loading } = useDiscordData();
-  const { updateConfig, load } = useUpdateConfig();
+  const { roles } = useDiscordData();
+  const { updateConfig } = useUpdateConfig();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -91,10 +95,10 @@ const Bday = () => {
                       <FormControl>
                         <Select onValueChange={field.onChange}>
                           <SelectTrigger className="w-[180px] bg-dark-dark-green text-text-lilly-pad-white border-light-petal-pink">
-                            <SelectValue placeholder="Theme" />
+                            <SelectValue placeholder="Select Role" />
                           </SelectTrigger>
                           <SelectContent className="">
-                            {roles.map((role) => (
+                            {roles.map((role: Role) => (
                               <SelectItem key={role.id} value={role.id}>
                                 {role.name}
                               </SelectItem>

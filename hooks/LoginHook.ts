@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import useSessionExpiration from "./TokenExpirationHook";
@@ -15,12 +15,12 @@ const useLogin = () => {
 
   const [isTempPassword, setIsTempPassword] = useState(false);
 
-  const LoginUser = async (values: any) => {
+  const LoginUser = async (values: Record<string, unknown>) => {
     try {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/admin/login",
+        "https://leiabot.onrender.com/admin/login",
         values,
         { withCredentials: true }
       );
@@ -52,7 +52,7 @@ const useLogin = () => {
     }
   };
 
-  const changePassword = async (newPassword) => {
+  const changePassword = async (newPassword: string) => {
     const id = localStorage.getItem("userId"); // Retrieve userId from local storage
     console.log("Attempting to change password...");
     console.log("User ID before change:", id); // Check userId value
@@ -66,7 +66,7 @@ const useLogin = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/admin/change-password",
+        "https://leiabot.onrender.com/admin/change-password",
         { id, newPassword }, // Pass userId and newPassword directly
         { withCredentials: true }
       );
@@ -77,7 +77,9 @@ const useLogin = () => {
         throw new Error(Data.error);
       }
 
-      const id = localStorage.removeItem("userId"); // Retrieve userId from local storage
+      if (id) {
+        localStorage.removeItem("userId");
+      }
 
       setIsTempPassword(false);
       setData(Data);

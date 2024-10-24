@@ -20,7 +20,7 @@ const formSchema = z.object({
 });
 
 const Annoucment = () => {
-  const { load, updateConfig } = useUpdateConfig();
+  const { updateConfig } = useUpdateConfig();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,6 +45,11 @@ const Annoucment = () => {
       </div>
     );
   }
+
+  type Channel = {
+    id: string;
+    name: string;
+  };
 
   return (
     <div>
@@ -74,7 +79,7 @@ const Annoucment = () => {
                             <SelectValue placeholder="Select Channel" />
                           </SelectTrigger>
                           <SelectContent>
-                            {channels.map((channel) => (
+                            {channels.map((channel: Channel) => (
                               <SelectItem key={channel.id} value={channel.id}>
                                 {channel.name}
                               </SelectItem>
