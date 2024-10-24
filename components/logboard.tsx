@@ -43,7 +43,7 @@ const logboard = () => {
           </div>
         </section>
 
-        <div className=" border-white border-[1px] rounded overflow-y-scroll custom-scrollbar p-2  ">
+        <div className=" border-white border-[1px] rounded overflow-y-scroll custom-scrollbar p-2 h-full ">
           {loadingMessages ? (
             <p>Loading messages...</p>
           ) : messages.length > 0 ? (

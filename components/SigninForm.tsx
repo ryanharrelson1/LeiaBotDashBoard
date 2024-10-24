@@ -14,16 +14,29 @@ import {
 import { Input } from "@/components/ui/input";
 import useDiscordOAuth from "@/hooks/DiscordHook";
 import useLogin from "@/hooks/LoginHook";
+import PasswordChangeModel from "@/components/PasswordChangeModel";
+import { useState, useEffect } from "react";
 
 const SigninForm = () => {
   const { redirectToDiscordOAuth, loading } = useDiscordOAuth();
-  const { LoginUser, load } = useLogin();
+  const { LoginUser, load, isTempPassword } = useLogin();
+  const [showPassChange, setShowPassChange] = useState(false);
+
+  // Move the condition to a useEffect hook
+  useEffect(() => {
+    if (isTempPassword) {
+      setShowPassChange(true);
+    } else {
+      setShowPassChange(false);
+    }
+  }, [isTempPassword]); // Dependency array
 
   const formSchema = z.object({
     Username: z.string().min(2).max(50),
     Password: z.string().min(2).max(30),
   });
-  // 1. Define your form.
+
+  // Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,11 +45,8 @@ const SigninForm = () => {
     },
   });
 
-  // 2. Define a submit handler.
+  // Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-
     LoginUser(values);
   }
 
@@ -113,6 +123,10 @@ const SigninForm = () => {
               </div>
             </form>
           </Form>
+          <PasswordChangeModel
+            isVisable={showPassChange}
+            onClose={() => setShowPassChange(false)}
+          />
         </div>
       </div>
     </main>
