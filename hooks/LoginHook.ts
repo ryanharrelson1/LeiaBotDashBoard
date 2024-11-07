@@ -20,7 +20,7 @@ const useLogin = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/admin/login",
+        "http://192.168.1.149:5000/admin/login",
         values,
         { withCredentials: true }
       );
