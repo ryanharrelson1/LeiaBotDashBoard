@@ -10,7 +10,7 @@ const useSessionExpiration = (onExpire: () => void) => {
       // Only perform the check if the session is active
       if (!isActive) return;
 
-      await axios.get("http://localhost:5000/admin/test-auth", {
+      await axios.get("http://192.168.1.149:5000/admin/test-auth", {
         withCredentials: true,
       });
       setIsExpired(false); // Reset the expired state if the request is successful
